@@ -1,0 +1,332 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CourseTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">TestingProject</a>
+</div>
+
+<h1>Coverage Summary for Class: CourseTest (TestingProject)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CourseTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (33/33)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (81/81)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package TestingProject;
+&nbsp;
+&nbsp;import org.junit.jupiter.api.Test;
+&nbsp;import org.junit.jupiter.api.BeforeEach;
+&nbsp;import static org.junit.jupiter.api.Assertions.*;
+&nbsp;
+<b class="fc">&nbsp;public class CourseTest {</b>
+&nbsp;
+&nbsp;    private Course course;
+&nbsp;
+&nbsp;    @BeforeEach
+&nbsp;    public void setUp() {
+<b class="fc">&nbsp;        course = new Course(&quot;Mathematics&quot;, 3, &quot;A&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Constructor tests with valid inputs
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithValidInputs() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;Physics&quot;, 4, &quot;B&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;Physics&quot;, c.getCourseName());</b>
+<b class="fc">&nbsp;        assertEquals(4, c.getCreditHours());</b>
+<b class="fc">&nbsp;        assertEquals(&quot;B&quot;, c.getLetterGrade());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithAllValidGrades() {
+<b class="fc">&nbsp;        Course cA = new Course(&quot;Course1&quot;, 3, &quot;A&quot;);</b>
+<b class="fc">&nbsp;        Course cB = new Course(&quot;Course2&quot;, 3, &quot;B&quot;);</b>
+<b class="fc">&nbsp;        Course cC = new Course(&quot;Course3&quot;, 3, &quot;C&quot;);</b>
+<b class="fc">&nbsp;        Course cD = new Course(&quot;Course4&quot;, 3, &quot;D&quot;);</b>
+<b class="fc">&nbsp;        Course cF = new Course(&quot;Course5&quot;, 3, &quot;F&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(&quot;A&quot;, cA.getLetterGrade());</b>
+<b class="fc">&nbsp;        assertEquals(&quot;B&quot;, cB.getLetterGrade());</b>
+<b class="fc">&nbsp;        assertEquals(&quot;C&quot;, cC.getLetterGrade());</b>
+<b class="fc">&nbsp;        assertEquals(&quot;D&quot;, cD.getLetterGrade());</b>
+<b class="fc">&nbsp;        assertEquals(&quot;F&quot;, cF.getLetterGrade());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Constructor tests with null/empty course name
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithNullCourseName() {
+<b class="fc">&nbsp;        Course c = new Course(null, 3, &quot;A&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;Unknown&quot;, c.getCourseName());</b>
+<b class="fc">&nbsp;        assertEquals(3, c.getCreditHours());</b>
+<b class="fc">&nbsp;        assertEquals(&quot;A&quot;, c.getLetterGrade());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithEmptyCourseName() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;&quot;, 3, &quot;B&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;Unknown&quot;, c.getCourseName());</b>
+<b class="fc">&nbsp;        assertEquals(3, c.getCreditHours());</b>
+<b class="fc">&nbsp;        assertEquals(&quot;B&quot;, c.getLetterGrade());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Constructor tests with invalid credit hours
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithCreditHoursZero() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;History&quot;, 0, &quot;A&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(3, c.getCreditHours()); // defaults to 3</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithNegativeCreditHours() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;History&quot;, -1, &quot;A&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(3, c.getCreditHours()); // defaults to 3</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithCreditHoursSeven() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;History&quot;, 7, &quot;A&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(3, c.getCreditHours()); // defaults to 3</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithCreditHoursAboveMax() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;History&quot;, 100, &quot;A&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(3, c.getCreditHours()); // defaults to 3</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithMinValidCreditHours() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;Lab&quot;, 1, &quot;A&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(1, c.getCreditHours());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithMaxValidCreditHours() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;Thesis&quot;, 6, &quot;A&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(6, c.getCreditHours());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithCreditHoursInRange() {
+<b class="fc">&nbsp;        for (int i = 1; i &lt;= 6; i++) {</b>
+<b class="fc">&nbsp;            Course c = new Course(&quot;Course&quot; + i, i, &quot;A&quot;);</b>
+<b class="fc">&nbsp;            assertEquals(i, c.getCreditHours());</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    // Constructor tests with invalid letter grades
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithNullGrade() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;English&quot;, 3, null);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;F&quot;, c.getLetterGrade()); // defaults to F</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithInvalidGradeString() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;English&quot;, 3, &quot;X&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;F&quot;, c.getLetterGrade()); // defaults to F</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithLowercaseGrade() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;English&quot;, 3, &quot;a&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;F&quot;, c.getLetterGrade()); // defaults to F (case-sensitive)</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithPlusMinusGrade() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;English&quot;, 3, &quot;A+&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;F&quot;, c.getLetterGrade()); // defaults to F</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithEmptyGrade() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;English&quot;, 3, &quot;&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;F&quot;, c.getLetterGrade()); // defaults to F</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testConstructorWithNumericGrade() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;English&quot;, 3, &quot;90&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;F&quot;, c.getLetterGrade()); // defaults to F</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // getCourseName tests
+&nbsp;    @Test
+&nbsp;    public void testGetCourseName() {
+<b class="fc">&nbsp;        assertEquals(&quot;Mathematics&quot;, course.getCourseName());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetCourseNameAfterDefaultSet() {
+<b class="fc">&nbsp;        Course c = new Course(null, 3, &quot;A&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;Unknown&quot;, c.getCourseName());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // getCreditHours tests
+&nbsp;    @Test
+&nbsp;    public void testGetCreditHours() {
+<b class="fc">&nbsp;        assertEquals(3, course.getCreditHours());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetCreditHoursAfterDefaultSet() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;Test&quot;, 0, &quot;A&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(3, c.getCreditHours());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // getLetterGrade tests
+&nbsp;    @Test
+&nbsp;    public void testGetLetterGrade() {
+<b class="fc">&nbsp;        assertEquals(&quot;A&quot;, course.getLetterGrade());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetLetterGradeAfterDefaultSet() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;Test&quot;, 3, null);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;F&quot;, c.getLetterGrade());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // getGradePoint tests
+&nbsp;    @Test
+&nbsp;    public void testGetGradePointForA() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;Course&quot;, 3, &quot;A&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(4.0, c.getGradePoint(), 0.001);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetGradePointForB() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;Course&quot;, 3, &quot;B&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(3.0, c.getGradePoint(), 0.001);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetGradePointForC() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;Course&quot;, 3, &quot;C&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(2.0, c.getGradePoint(), 0.001);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetGradePointForD() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;Course&quot;, 3, &quot;D&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(1.0, c.getGradePoint(), 0.001);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetGradePointForF() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;Course&quot;, 3, &quot;F&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(0.0, c.getGradePoint(), 0.001);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetGradePointForDefaultGrade() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;Course&quot;, 3, &quot;Invalid&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(0.0, c.getGradePoint(), 0.001);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Comprehensive integration tests
+&nbsp;    @Test
+&nbsp;    public void testCourseWithAllDefaults() {
+<b class="fc">&nbsp;        Course c = new Course(null, 0, null);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;Unknown&quot;, c.getCourseName());</b>
+<b class="fc">&nbsp;        assertEquals(3, c.getCreditHours());</b>
+<b class="fc">&nbsp;        assertEquals(&quot;F&quot;, c.getLetterGrade());</b>
+<b class="fc">&nbsp;        assertEquals(0.0, c.getGradePoint(), 0.001);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testCourseWithMixedValidAndInvalidInputs() {
+<b class="fc">&nbsp;        Course c = new Course(&quot;Valid Name&quot;, -5, &quot;InvalidGrade&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;Valid Name&quot;, c.getCourseName());</b>
+<b class="fc">&nbsp;        assertEquals(3, c.getCreditHours()); // defaulted</b>
+<b class="fc">&nbsp;        assertEquals(&quot;F&quot;, c.getLetterGrade()); // defaulted</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-27 07:03</div>
+</div>
+</body>
+</html>
